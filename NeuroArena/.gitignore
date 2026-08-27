@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+
+# TensorBoard
+tensorboard_logs/
+
+# Temporary files
+tempCodeRunnerFile.py
+
+# OS
+.DS_Store
+Thumbs.db
