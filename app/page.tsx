@@ -20,24 +20,52 @@ import { useTrainingSim } from "@/lib/use-training-sim"
 import { StatCard } from "@/components/dashboard/stat-card"
 import { LineChart } from "@/components/dashboard/line-chart"
 import { ReplayDialog } from "@/components/dashboard/replay-dialog"
+import { pauseTraining, resumeTraining, stopTraining } from "@/lib/api"
 
 const SPEEDS = [1, 2, 4]
 
 export default function Page() {
   const { state, running, setRunning, speedMultiplier, setSpeedMultiplier, reset } = useTrainingSim()
   const [replayOpen, setReplayOpen] = useState(false)
+  const [loading, setLoading] = useState(false)
 
-  const rewardTrend = state.rewardHistory.length > 4
-    ? state.reward >= state.rewardHistory[state.rewardHistory.length - 5].value
-      ? "up"
-      : "down"
-    : "flat"
+  const handleToggleTraining = async () => {
+    setLoading(true)
+    try {
+      if (running) {
+        if (state.sessionId) await pauseTraining(state.sessionId)
+        setRunning(false)
+      } else {
+        if (state.sessionId) await resumeTraining(state.sessionId)
+        setRunning(true)
+      }
+    } catch (err) {
+      console.error("Failed to toggle training state:", err)
+    } finally {
+      setLoading(false)
+    }
+  }
 
-  const lossTrend = state.lossHistory.length > 4
-    ? state.loss <= state.lossHistory[state.lossHistory.length - 5].value
-      ? "down"
-      : "up"
-    : "flat"
+  const handleResetTraining = async () => {
+    setLoading(true)
+    try {
+      if (state.sessionId) {
+        await stopTraining(state.sessionId)
+      }
+      reset()
+    } catch (err) {
+      console.error("Failed to stop training:", err)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const rewardTrend =
+    state.rewardHistory.length > 4
+      ? state.reward >= state.rewardHistory[state.rewardHistory.length - 5].value
+        ? "up"
+        : "down"
+      : "flat"
 
   return (
     <main className="min-h-dvh bg-background">
@@ -79,11 +107,11 @@ export default function Page() {
                 </button>
               ))}
             </div>
-            <Button variant="outline" size="lg" onClick={() => setRunning(!running)}>
+            <Button variant="outline" size="lg" disabled={loading} onClick={handleToggleTraining}>
               {running ? <Pause /> : <Play />}
               {running ? "Pause" : "Resume"}
             </Button>
-            <Button variant="outline" size="lg" onClick={reset}>
+            <Button variant="outline" size="lg" disabled={loading} onClick={handleResetTraining}>
               <RotateCcw />
               Reset
             </Button>

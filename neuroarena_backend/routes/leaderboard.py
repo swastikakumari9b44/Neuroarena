@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from database import get_db
-from models import Leaderboard, User
-from schemas import LeaderboardEntry
+from ..database import get_db
+from ..models import Leaderboard, User
+from ..schemas import LeaderboardEntry
 
 router = APIRouter()
 

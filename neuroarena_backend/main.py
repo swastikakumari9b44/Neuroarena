@@ -1,11 +1,26 @@
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
+from .config import settings
 from contextlib import asynccontextmanager
-from database import init_db
-from routes import game, ai, training, auth, leaderboard
-from websockets import manager
+from .database import init_db
+from .routes import game, ai, training, auth, leaderboard
+from .websocket_manager import manager
 import sys
 import os
+
+import uuid
+
+app = FastAPI()
+
+@app.post("/game/start")
+def start_game():
+    return {
+        "game_id": str(uuid.uuid4()),
+        "difficulty": "Easy",
+        "score": 0,
+        "health": 100,
+        "status": "Game Started"
+    }
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 

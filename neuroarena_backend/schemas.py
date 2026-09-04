@@ -26,7 +26,7 @@ class GameStartResponse(BaseModel):
 
 class GameActionRequest(BaseModel):
     game_id: str
-    action: int
+    action: str
 
 class GameActionResponse(BaseModel):
     state: Dict[str, Any]
@@ -55,6 +55,7 @@ class TrainStatusResponse(BaseModel):
     reward: float
     win_rate: float
     steps_done: int
+    loss: float
 
 class ReplayResponse(BaseModel):
     match_id: str
@@ -68,3 +69,15 @@ class LeaderboardEntry(BaseModel):
     elo: float
     wins: int
     losses: int
+class TrainingMetricPoint(BaseModel):
+    episode: int
+    reward: float
+    loss: float
+    win_rate: float
+
+class SavedModelResponse(BaseModel):
+    id: str
+    model_name: str
+    version: str
+    accuracy: float
+    created_at: datetime

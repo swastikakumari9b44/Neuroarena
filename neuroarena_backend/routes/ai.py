@@ -1,6 +1,5 @@
 from fastapi import APIRouter
-from schemas import AIMoveRequest, AIMoveResponse
-
+from ..schemas import AIMoveRequest, AIMoveResponse
 router = APIRouter()
 
 @router.post("/move", response_model=AIMoveResponse)

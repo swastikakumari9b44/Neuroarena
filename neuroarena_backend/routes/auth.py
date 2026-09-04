@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from database import get_db
-from schemas import UserRegister, UserLogin, TokenResponse
-from models import User, Leaderboard
-from utils.auth import hash_password, verify_password, create_access_token
+from ..database import get_db
+from ..schemas import UserRegister, UserLogin, TokenResponse
+from ..models import User, Leaderboard
+from ..utils.auth import hash_password, verify_password, create_access_token
 import uuid
 from datetime import datetime
 
