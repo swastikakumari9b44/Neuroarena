@@ -4,7 +4,7 @@
 
 **A reinforcement learning training ground with a live web dashboard**
 
-Start reinforcement-learning training and monitor episode rewards, loss, win rate, and checkpoint progress through a web interface.
+Built NeuroArena, a reinforcement-learning game environment where a PPO agent can be trained to interact with a custom Pygame-based game, with a FastAPI backend and Next.js dashboard for monitoring training performance.
 
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-backend-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
