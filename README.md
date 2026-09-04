@@ -93,35 +93,6 @@ The project currently uses **PPO (Proximal Policy Optimization)** as its reinfor
 
 ---
 
-## Project Structure
-
-```text
-NeuroArena/
-│
-├── neuroarena_backend/
-│   ├── main.py
-│   ├── config.py
-│   ├── database.py
-│   ├── models.py
-│   ├── schemas.py
-│   ├── routes/
-│   ├── game/
-│   └── utils/
-│
-├── neuroarena_frontend/
-│   ├── app/
-│   ├── components/
-│   ├── lib/
-│   ├── public/
-│   └── package.json
-│
-├── assets/
-├── requirements.txt
-└── README.md
-```
-
----
-
 ## Getting Started
 
 ### Prerequisites
