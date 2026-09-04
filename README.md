@@ -4,8 +4,7 @@
 
 **A reinforcement learning training ground with a live web dashboard**
 
-Watch a PPO agent learn to play, in real time, from your browser.
-
+Start reinforcement-learning training and monitor episode rewards, loss, win rate, and checkpoint progress through a web interface.
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-backend-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![Next.js](https://img.shields.io/badge/Next.js-frontend-000000?logo=next.js&logoColor=white)](https://nextjs.org/)
